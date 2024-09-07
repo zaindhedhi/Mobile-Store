@@ -65,7 +65,11 @@ const arr = [{
 
 let getDataFromLocalStorage = JSON.parse(localStorage.getItem('cartItems'))
 console.log('localstorage data' , getDataFromLocalStorage);
-cartItems = []
+
+let cartItems = []
+if(getDataFromLocalStorage != null){
+    cartItems = getDataFromLocalStorage;
+}
 
 let div = document.querySelector('#phones');
 for(let i = 0; i < arr.length; i++){
