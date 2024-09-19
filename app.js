@@ -71,7 +71,13 @@ const arr = [{
     price: 300000
 }]
 
+const getDataFromLocalStorage = JSON.parse(localStorage.getItem('cartItems'))
+console.log('local Storage Data' , getDataFromLocalStorage)
+
 cartItems = []
+if(getDataFromLocalStorage != null){
+    cartItems = getDataFromLocalStorage
+}
 
 let div = document.querySelector('#phones');
 for(let i = 0; i < arr.length; i++){
@@ -98,6 +104,12 @@ function addToCart(index){
     cartItems.push(arr[index])
     }
     console.log(cartItems)
- 
-    
+
 }
+
+let checkOut = document.querySelector('#yourcart-btn')
+
+checkOut.addEventListener('click' , function(){
+    localStorage.setItem('cartItems' , JSON.stringify(cartItems))
+    window.location = "yourCart.html"
+})
